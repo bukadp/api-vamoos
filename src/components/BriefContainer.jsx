@@ -10,6 +10,13 @@ function BriefContainer() {
     const navigate = useNavigate();
 
     useEffect(() => {
+        console.log(dataBrief)
+        if (!isLoading && !dataBrief.find(x => x.id === (Number(briefId)))) {
+            navigate("/404");
+        }
+    }, [isLoading, briefId, navigate]);
+
+    useEffect(() => {
         async function fetchMyAPI() {
             const response = await vamoosAPI.getData()
             setDataBrief(response.brief)
@@ -20,20 +27,14 @@ function BriefContainer() {
     useEffect(() => {
         if (dataBrief.length !== 0) {
             setIsLoading(false);
-
         }
     }, [dataBrief]);
 
-    console.log('dataBrief', dataBrief)
-    console.log('isLoading', isLoading)
-    console.log('briefId', briefId, typeof briefId)
-    /*console.log('dataBriefITEM', dataBrief[briefId].id)*/
     return (
         <div>
             {isLoading ? (
                     <h1>Loading...</h1>
                 ) :
-
                 <Brief
                     dataBrief={dataBrief}
                     briefId={briefId}

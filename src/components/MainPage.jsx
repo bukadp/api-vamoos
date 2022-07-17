@@ -8,7 +8,7 @@ import BriefContainer from "./BriefContainer";
 function Brief(props) {
     return (
         <div>
-            <div className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600 py-2 mx-auto border-2">
+            <div className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600 py-2 mx-auto">
                 <NavLink to={'/brief/' + (props.id)}>
                     <div>{`${props.day} day. ${props.headline}`}</div>
                 </NavLink>
